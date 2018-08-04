@@ -1,9 +1,16 @@
 img {
   margin-left: 26px;
 }
+h1 {
+  font-size: 36px;
+  text-align: center;
+}
 h2 {
   background-color: blue;
   color: white;
+  font-size: 30px;
+  margin: 0 10px;
+  padding: 5px;
 }
 button {
     background-color: blue;
@@ -37,7 +44,7 @@ li {
 .burger-displays {
   width: 20%; 
   height: 260px; 
-  text-align: center;
+  text-align: left;
   float: left;
 }
 #title {
