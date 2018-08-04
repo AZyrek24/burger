@@ -1,6 +1,7 @@
 // Import MySQL connection.
 var connection = require("../config/connection.js");
 
+// Inserts the correct amount of question marks into array for query
 function printQuestionMarks(num) {
   var arr = [];
 
@@ -20,24 +21,22 @@ function objToSql(ob) {
     var value = ob[key];
     // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
-      // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+      // if string with spaces, add quotations 
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
       arr.push(key + "=" + value);
     }
   }
-
   // translate array of strings to a single comma-separated string
   return arr.toString();
 }
 
+// ORM
+//=========================================================================
 var orm = {
   selectAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    
+    var queryString = "SELECT * FROM " + tableInput + ";";    
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -79,12 +78,9 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
-  }
-  
+  }  
 };
-
 
 module.exports = orm;

@@ -1,5 +1,4 @@
 var express = require('express');
-// Import the model (burgers.js) to use its database functions.
 var burger = require("../models/burger.js");
 
 var router = express.Router();
@@ -20,7 +19,6 @@ router.post("/api/burgers", function(req, res) {
   ], [
     req.body.burger_name, req.body.devoured
   ], function(result) {
-    // Send back the ID of the new quote
     res.json({ id: result.insertId });
   });
 });
@@ -41,5 +39,4 @@ router.put("/api/burgers/:id", function(req, res) {
   });
 });
 
-// Export routes for server.js to use.
 module.exports = router;
